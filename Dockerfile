@@ -4,6 +4,12 @@ ENV VERSION 1.0
 
 MAINTAINER martin.devlin@contino.io
 
-COPY server.js server.js
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
 
-CMD["node server.sj"]
+COPY . .
+
+EXPOSE 8080
+
+CMD [ "node", "server.js" ]
